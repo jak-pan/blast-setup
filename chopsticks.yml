@@ -1,0 +1,18 @@
+endpoint: wss://hydration-rpc.n.dwellir.com
+mock-signature-host: true
+db: ./hydradx.db.sqlite
+runtime-log-level: 4
+# wasm-override: hydradx_runtime.compact.compressed.wasm
+
+import-storage:
+  System:
+    Account:
+      - - - 7NPoMQbiA6trJKkjB35uk96MeJD4PGWkLQLH7k7hXEkZpiba
+        - providers: 1
+          data:
+            free: "1000000000000000000000000"
+
+  TechnicalCommittee:
+    Members: ["7NPoMQbiA6trJKkjB35uk96MeJD4PGWkLQLH7k7hXEkZpiba"]
+  Council:
+    Members: ["7NPoMQbiA6trJKkjB35uk96MeJD4PGWkLQLH7k7hXEkZpiba"]

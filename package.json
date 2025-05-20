@@ -1,0 +1,17 @@
+{
+  "name": "oracle-hack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "poc.js",
+  "type": "module",
+  "scripts": {
+    "testnet": "bash run-testnet.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@acala-network/chopsticks": "^0.13.1",
+    "@polkadot/api": "^12.2.1",
+    "bignumber.js": "^9.1.2"
+  }
+}
