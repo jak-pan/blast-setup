@@ -72,7 +72,18 @@ async function createAssetsOnAssetHub(api, signer, assets, tokenAmount) {
       tokenAmount
     );
 
-    createCalls.push(createAssetCall, setMetadataCall, mintTokensCall);
+    //touch hydration account
+    const touchOtherCall = api.tx.assets.touchOther(
+      assetId,
+      "13cKp89Uh2yWgTG28JA1QEvPUMjEPKejqkjHKf9zqLiFKjH6"
+    );
+
+    createCalls.push(
+      createAssetCall,
+      setMetadataCall,
+      mintTokensCall,
+      touchOtherCall
+    );
 
     // Increment assetId for next iteration
     assetId = new BN(assetId).add(new BN(1));
