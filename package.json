@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "testnet": "bash run-testnet.sh",
+    "chopsticks": "npx -y @acala-network/chopsticks@latest xcm -r polkadot -p hydradx -p polkadot-asset-hub",
     "setup": "node setup-asset-hub.js"
   },
   "author": "",
