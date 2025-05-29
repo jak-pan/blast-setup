@@ -2,6 +2,7 @@ import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Keyring } from "@polkadot/api";
 
 async function main() {
+  process.abort();
   console.log("CONNECTING TO NODE");
 
   const wsProvider = new WsProvider("ws://localhost:8000");

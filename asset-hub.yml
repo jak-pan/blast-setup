@@ -1,0 +1,11 @@
+endpoint: wss://polkadot-asset-hub-rpc.polkadot.io
+mock-signature-host: true
+db: ./db.sqlite
+
+import-storage:
+  System:
+    Account:
+      - - - 7NPoMQbiA6trJKkjB35uk96MeJD4PGWkLQLH7k7hXEkZpiba
+        - providers: 1
+          data:
+            free: 1000000000000000

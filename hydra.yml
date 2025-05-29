@@ -1,8 +1,6 @@
 endpoint: wss://hydration-rpc.n.dwellir.com
 mock-signature-host: true
 db: ./hydradx.db.sqlite
-runtime-log-level: 4
-# wasm-override: hydradx_runtime.compact.compressed.wasm
 
 import-storage:
   System:

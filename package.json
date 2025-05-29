@@ -5,13 +5,17 @@
   "main": "poc.js",
   "type": "module",
   "scripts": {
-    "testnet": "bash run-testnet.sh"
+    "testnet": "bash run-testnet.sh",
+    "setup": "node setup-asset-hub.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@acala-network/chopsticks": "^0.13.1",
     "@polkadot/api": "^12.2.1",
+    "@polkadot/keyring": "^12.2.1",
+    "@polkadot/util": "^12.2.1",
+    "@polkadot/util-crypto": "^12.2.1",
     "bignumber.js": "^9.1.2"
   }
 }
