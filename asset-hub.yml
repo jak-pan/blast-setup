@@ -1,6 +1,5 @@
 endpoint: wss://polkadot-asset-hub-rpc.polkadot.io
 mock-signature-host: true
-db: ./db.sqlite
 
 import-storage:
   System:

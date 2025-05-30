@@ -5,6 +5,6 @@ npx -y @acala-network/chopsticks@latest xcm \
  -p polkadot-asset-hub &
 CHOPSTICKS_PID=$!
 trap "kill $CHOPSTICKS_PID" SIGINT
-sleep 2
+sleep 15
 node setup-tokens.js
 wait $CHOPSTICKS_PID

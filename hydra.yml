@@ -1,6 +1,5 @@
 endpoint: wss://hydration-rpc.n.dwellir.com
 mock-signature-host: true
-db: ./hydradx.db.sqlite
 
 import-storage:
   System:
