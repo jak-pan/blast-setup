@@ -2,9 +2,10 @@ import { ApiPromise, WsProvider } from "@polkadot/api";
 import { Keyring } from "@polkadot/keyring";
 import { BN } from "@polkadot/util";
 import { decodeAddress } from "@polkadot/util-crypto";
+import { readFileSync, writeFileSync } from "fs";
 
 class BlockProducer {
-  constructor(provider, { interval = 3000 } = {}) {
+  constructor(provider, { interval = 6000 } = {}) {
     this.provider = provider;
     this.interval = interval;
     this.timer = null;
@@ -32,17 +33,60 @@ class BlockProducer {
 async function registerExternalAssets(api, signer, assets) {
   console.log("--- REGISTERING EXTERNAL ASSETS ON HYDRATION ---");
 
-  const registerCalls = assets.map(({ assetId, name }) => {
-    const location = {
-      parents: 1,
-      interior: {
-        X2: [{ Parachain: 1000 }, { GeneralIndex: assetId }],
-      },
-    };
-    return api.tx.assetRegistry.registerExternal(location);
-  });
+  const currentAssetId = (await api.query.assetRegistry.nextAssetId()).sub(
+    new BN(1)
+  );
+  const assetMetadata = [];
 
-  await api.tx.utility.batch(registerCalls).signAndSend(signer);
+  const registerCalls = assets.map(
+    ({ assetId, name, symbol, decimals }, index) => {
+      const location = {
+        parents: 1,
+        interior: {
+          X3: [
+            { Parachain: 1000 },
+            { PalletInstance: 50 },
+            { GeneralIndex: assetId.toNumber() },
+          ],
+        },
+      };
+
+      assetMetadata.push({
+        assetId: currentAssetId.add(new BN(index)).toNumber() + 1000000,
+        assetHubAssetId: assetId.toNumber(),
+        name,
+        symbol,
+        decimals,
+        location,
+      });
+
+      return api.tx.assetRegistry.registerExternal(location);
+    }
+  );
+
+  // write asset metadata to file
+  writeFileSync(
+    `./asset-metadata.json`,
+    JSON.stringify(assetMetadata, null, 2)
+  );
+
+  return new Promise((resolve, reject) => {
+    api.tx.utility
+      .batch(registerCalls)
+      .signAndSend(signer, (result) => {
+        if (result.status.isInBlock) {
+          console.log(`Asset registration in block ${result.status.asInBlock}`);
+          resolve();
+        } else if (result.isError) {
+          console.error(`Transaction error:`, result.asError);
+          reject(result.asError);
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending transaction:", error);
+        reject(error);
+      });
+  });
 }
 
 async function createAssetsOnAssetHub(api, signer, assets, tokenAmount) {
@@ -93,7 +137,13 @@ async function createAssetsOnAssetHub(api, signer, assets, tokenAmount) {
   const tx = await batchCall.signAndSend(signer);
   console.log("Assets creation transaction hash:", tx.toHex());
 
-  return assetIds;
+  // Return array of metadata objects
+  return assetIds.map((id, index) => ({
+    id: id.toString(),
+    name: assets[index].name,
+    symbol: assets[index].symbol,
+    decimals: assets[index].decimals,
+  }));
 }
 
 async function main() {
@@ -128,49 +178,41 @@ async function main() {
 
   console.log("--- CREATING TOKENS ON ASSET HUB ---");
 
-  const assets = JSON.stringify([
-    {
-      name: "BLAST-1",
-      symbol: "BLAST Stage 1",
-      decimals: 12,
-    },
-    {
-      name: "FAZE-1",
-      symbol: "FAZE Stage 1",
-      decimals: 12,
-    },
-  ]);
+  // Read asset configurations from file
+  const assets = JSON.parse(readFileSync("./assets.json", "utf8"));
 
   const tokenAmount = new BN(1_000_000_000).mul(new BN(10).pow(new BN(12)));
   const transferAmount = new BN(100_000_000).mul(new BN(10).pow(new BN(12)));
 
   // Create both tokens in a single batch
-  const [blastAssetId, fazeAssetId] = await createAssetsOnAssetHub(
+  const registeredAssets = await createAssetsOnAssetHub(
     assetHubApi,
     alice,
-    JSON.parse(assets),
+    assets,
     tokenAmount
   );
 
   // Register external assets on Hydration
-  await registerExternalAssets(testnetApi, alice, [
-    { assetId: blastAssetId, name: "BLAST-1" },
-    { assetId: fazeAssetId, name: "FAZE-1" },
-  ]);
+  await registerExternalAssets(
+    testnetApi,
+    alice,
+    registeredAssets.map((asset) => ({
+      assetId: new BN(asset.id),
+      name: asset.name,
+      symbol: asset.symbol,
+      decimals: asset.decimals,
+    }))
+  );
 
   console.log("--- TRANSFERRING TOKENS TO TESTNET ---");
 
-  // Transfer BLAST to testnet
-  await transferToTestnet(assetHubApi, alice, {
-    assetId: blastAssetId,
-    amount: transferAmount,
-  });
-
-  // Transfer FAZE to testnet
-  await transferToTestnet(assetHubApi, alice, {
-    assetId: fazeAssetId,
-    amount: transferAmount,
-  });
+  // Transfer tokens to testnet
+  for (const asset of registeredAssets) {
+    await transferToTestnet(assetHubApi, alice, {
+      assetId: new BN(asset.id),
+      amount: transferAmount,
+    });
+  }
 
   console.log("--- SETUP COMPLETE ---");
 }

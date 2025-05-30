@@ -1,0 +1,87 @@
+[
+  {
+    "name": "BLAST Stage 1",
+    "symbol": "BLAST-1",
+    "decimals": 12
+  },
+  {
+    "name": "Complexity Stage 1",
+    "symbol": "Complexity-1",
+    "decimals": 12
+  },
+  {
+    "name": "HEROIC Stage 1",
+    "symbol": "HEROIC-1",
+    "decimals": 12
+  },
+  {
+    "name": "B8 Stage 1",
+    "symbol": "B8-1",
+    "decimals": 12
+  },
+  {
+    "name": "Betboom Stage 1",
+    "symbol": "Betboom-1",
+    "decimals": 12
+  },
+  {
+    "name": "TYLOO Stage 1",
+    "symbol": "TYLOO-1",
+    "decimals": 12
+  },
+  {
+    "name": "Lynn Vision Stage 1",
+    "symbol": "LV-1",
+    "decimals": 12
+  },
+  {
+    "name": "Wildcard Stage 1",
+    "symbol": "Wildcard-1",
+    "decimals": 12
+  },
+  {
+    "name": "FlyQuest Stage 1",
+    "symbol": "FlyQuest-1",
+    "decimals": 12
+  },
+  {
+    "name": "OG Stage 1",
+    "symbol": "OG-1",
+    "decimals": 12
+  },
+  {
+    "name": "Chinggis Warriors Stage 1",
+    "symbol": "CW-1",
+    "decimals": 12
+  },
+  {
+    "name": "Imperial Stage 1",
+    "symbol": "Imperial-1",
+    "decimals": 12
+  },
+  {
+    "name": "Nemiga Stage 1",
+    "symbol": "Nemiga-1",
+    "decimals": 12
+  },
+  {
+    "name": "NRG Stage 1",
+    "symbol": "NRG-1",
+    "decimals": 12
+  },
+  {
+    "name": "Legacy Stage 1",
+    "symbol": "Legacy-1",
+    "decimals": 12
+  },
+  {
+    "name": "Metizport Stage 1",
+    "symbol": "Metizport-1",
+    "decimals": 12
+  },
+  {
+    "name": "Fluxo Stage 1",
+    "symbol": "Fluxo-1",
+    "decimals": 12
+  }
+]

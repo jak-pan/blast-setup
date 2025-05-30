@@ -6,5 +6,5 @@ npx -y @acala-network/chopsticks@latest xcm \
 CHOPSTICKS_PID=$!
 trap "kill $CHOPSTICKS_PID" SIGINT
 sleep 2
-node setup-asset-hub.js
+node setup-tokens.js
 wait $CHOPSTICKS_PID
