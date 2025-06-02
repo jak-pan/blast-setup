@@ -1,0 +1,393 @@
+[
+  {
+    "assetId": 1000843,
+    "assetHubAssetId": 50000106,
+    "name": "BLAST Stage 1",
+    "symbol": "BLAST-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000106
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000844,
+    "assetHubAssetId": 50000107,
+    "name": "Complexity Stage 1",
+    "symbol": "Complexity-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000107
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000845,
+    "assetHubAssetId": 50000108,
+    "name": "HEROIC Stage 1",
+    "symbol": "HEROIC-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000108
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000846,
+    "assetHubAssetId": 50000109,
+    "name": "B8 Stage 1",
+    "symbol": "B8-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000109
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000847,
+    "assetHubAssetId": 50000110,
+    "name": "Betboom Stage 1",
+    "symbol": "Betboom-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000110
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000848,
+    "assetHubAssetId": 50000111,
+    "name": "TYLOO Stage 1",
+    "symbol": "TYLOO-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000111
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000849,
+    "assetHubAssetId": 50000112,
+    "name": "Lynn Vision Stage 1",
+    "symbol": "LV-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000112
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000850,
+    "assetHubAssetId": 50000113,
+    "name": "Wildcard Stage 1",
+    "symbol": "Wildcard-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000113
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000851,
+    "assetHubAssetId": 50000114,
+    "name": "FlyQuest Stage 1",
+    "symbol": "FlyQuest-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000114
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000852,
+    "assetHubAssetId": 50000115,
+    "name": "OG Stage 1",
+    "symbol": "OG-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000115
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000853,
+    "assetHubAssetId": 50000116,
+    "name": "Chinggis Warriors Stage 1",
+    "symbol": "CW-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000116
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000854,
+    "assetHubAssetId": 50000117,
+    "name": "Imperial Stage 1",
+    "symbol": "Imperial-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000117
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000855,
+    "assetHubAssetId": 50000118,
+    "name": "Nemiga Stage 1",
+    "symbol": "Nemiga-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000118
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000856,
+    "assetHubAssetId": 50000119,
+    "name": "NRG Stage 1",
+    "symbol": "NRG-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000119
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000857,
+    "assetHubAssetId": 50000120,
+    "name": "Legacy Stage 1",
+    "symbol": "Legacy-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000120
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000858,
+    "assetHubAssetId": 50000121,
+    "name": "Metizport Stage 1",
+    "symbol": "Metizport-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000121
+          }
+        ]
+      }
+    }
+  },
+  {
+    "assetId": 1000859,
+    "assetHubAssetId": 50000122,
+    "name": "Fluxo Stage 1",
+    "symbol": "Fluxo-1",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000122
+          }
+        ]
+      }
+    }
+  }
+]

@@ -4,6 +4,9 @@ import { BN } from "@polkadot/util";
 import { decodeAddress } from "@polkadot/util-crypto";
 import { readFileSync, writeFileSync } from "fs";
 
+// true for local, false for mainnet, change account and rpc
+const TESTNET = true;
+
 class BlockProducer {
   constructor(provider, { interval = 6000 } = {}) {
     this.provider = provider;
@@ -48,8 +51,15 @@ async function createXykPool(
 async function sendAndWait(tx, signer, description) {
   return new Promise((resolve, reject) => {
     tx.signAndSend(signer, (result) => {
-      if (result.status.isInBlock) {
-        console.log(`${description} in block ${result.status.asInBlock}`);
+      if (
+        (TESTNET && result.status.isInBlock) ||
+        (!TESTNET && result.status.isFinalized)
+      ) {
+        console.log(
+          `${description} in block ${
+            TESTNET ? result.status.asInBlock : result.status.asFinalized
+          }`
+        );
         resolve(result);
       } else if (result.isError) {
         console.error(`Transaction error:`, result.asError);
@@ -167,10 +177,12 @@ async function progress_blocks(wsProvider, count) {
 }
 
 async function main() {
-  console.log("CONNECTING TO ASSET HUB");
+  console.log("CONNECTING TO CHAINS");
 
   // Connect to Asset Hub
-  const assetHubWsProvider = new WsProvider("ws://localhost:8001");
+  const assetHubWsProvider = new WsProvider(
+    TESTNET ? "ws://localhost:8001" : "wss://asset-hub-paseo-rpc.dwellir.com"
+  );
   const assetHubApi = await ApiPromise.create({
     provider: assetHubWsProvider,
   });
@@ -178,22 +190,27 @@ async function main() {
   await assetHubApi.isReady;
 
   // Connect to Testnet
-  const testnetWsProvider = new WsProvider("ws://localhost:8000");
+  const testnetWsProvider = new WsProvider(
+    TESTNET ? "ws://localhost:8000" : "wss://paseo-rpc.play.hydration.cloud"
+  );
   const testnetApi = await ApiPromise.create({
     provider: testnetWsProvider,
   });
 
   await testnetApi.isReady;
 
-  const relayWsProvider = new WsProvider("ws://localhost:8002");
+  let relayWsProvider = null;
 
-  // Start producing new blocks every 2 seconds
-  const assetHubBlockProducer = new BlockProducer(assetHubWsProvider);
-  assetHubBlockProducer.start();
+  if (TESTNET) {
+    relayWsProvider = new WsProvider("ws://localhost:8002");
+    // Start producing new blocks every 2 seconds
+    const assetHubBlockProducer = new BlockProducer(assetHubWsProvider);
+    assetHubBlockProducer.start();
 
-  // Start producing new blocks every 2 seconds
-  const testnetBlockProducer = new BlockProducer(testnetWsProvider);
-  testnetBlockProducer.start();
+    // Start producing new blocks every 2 seconds
+    const testnetBlockProducer = new BlockProducer(testnetWsProvider);
+    testnetBlockProducer.start();
+  }
 
   const keyring = new Keyring({ type: "sr25519" });
   const alice = keyring.addFromUri("//Alice", { name: "Alice default" });
@@ -230,9 +247,11 @@ async function main() {
     }))
   );
 
-  await progress_blocks(assetHubWsProvider, 1);
-  await progress_blocks(relayWsProvider, 1);
-  await progress_blocks(testnetWsProvider, 1);
+  if (TESTNET) {
+    await progress_blocks(assetHubWsProvider, 1);
+    await progress_blocks(relayWsProvider, 1);
+    await progress_blocks(testnetWsProvider, 1);
+  }
 
   console.log("--- TRANSFERRING TOKENS TO TESTNET ---");
 
@@ -243,12 +262,14 @@ async function main() {
       amount: transferAmount,
     });
 
-    await progress_blocks(assetHubWsProvider, 1);
-    await progress_blocks(relayWsProvider, 1);
-    await progress_blocks(testnetWsProvider, 1);
+    if (TESTNET) {
+      await progress_blocks(assetHubWsProvider, 1);
+      await progress_blocks(relayWsProvider, 1);
+      await progress_blocks(testnetWsProvider, 1);
+    }
   }
 
-  console.log("--- CREATING POOLS ON TESTNET ---");
+  console.log("--- CREATING POOLS ON HYDRATION ---");
 
   const poolCalls = [];
 
