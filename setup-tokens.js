@@ -81,7 +81,7 @@ async function registerExternalAssets(api, signer, assets) {
   const assetMetadata = [];
 
   const registerCalls = assets.map(
-    ({ assetId, name, symbol, decimals }, index) => {
+    ({ assetId, name, symbol, decimals, initialPrice }, index) => {
       const location = {
         parents: 1,
         interior: {
@@ -100,6 +100,7 @@ async function registerExternalAssets(api, signer, assets) {
         symbol,
         decimals,
         location,
+        initialPrice,
       });
 
       return api.tx.assetRegistry.registerExternal(location);
@@ -244,6 +245,7 @@ async function main() {
       name: asset.name,
       symbol: asset.symbol,
       decimals: asset.decimals,
+      initialPrice: asset.initialPrice,
     }))
   );
 
@@ -273,19 +275,19 @@ async function main() {
 
   const poolCalls = [];
 
-  const firstPoolCall = await createXykPool(testnetApi, {
-    tokenA: new BN(5),
-    tokenB: new BN(assetMetadata[0].assetId),
-    amountA: new BN(100).mul(new BN(10).pow(new BN(10))),
-    initialPrice: 0.001,
-  });
-  await sendAndWait(firstPoolCall, alice, "First pool creation");
+  // const firstPoolCall = await createXykPool(testnetApi, {
+  //   tokenA: new BN(5),
+  //   tokenB: new BN(50000140),
+  //   amountA: new BN(100).mul(new BN(10).pow(new BN(10))),
+  //   initialPrice: 0.001,
+  // });
+  // await sendAndWait(firstPoolCall, alice, "First pool creation");
 
   for (let i = 0; i < assetMetadata.length; i++) {
-    if (i === 0) continue;
+    //if (i === 0) continue;
     const asset = assetMetadata[i];
     const poolCall = await createXykPool(testnetApi, {
-      tokenA: new BN(assetMetadata[0].assetId),
+      tokenA: new BN(50000140),
       tokenB: new BN(asset.assetId),
       amountA: initialPoolSize,
       initialPrice: asset.initialPrice,
