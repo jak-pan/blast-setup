@@ -1,104 +1,56 @@
 [
   {
-    "name": "BLAST Stage 1",
-    "symbol": "BLAST-1",
+    "name": "BLAST",
+    "symbol": "BLAST",
     "decimals": 12,
     "initialPrice": 1
   },
   {
-    "name": "Complexity Stage 1",
-    "symbol": "Complexity-1",
+    "name": "Team Spirit",
+    "symbol": "TS",
     "decimals": 12,
     "initialPrice": 1
   },
   {
-    "name": "HEROIC Stage 1",
-    "symbol": "HEROIC-1",
+    "name": "FURIA",
+    "symbol": "FURIA",
     "decimals": 12,
-    "initialPrice": 0.9333
+    "initialPrice": 1
   },
   {
-    "name": "B8 Stage 1",
-    "symbol": "B8-1",
+    "name": "FaZe Clan",
+    "symbol": "FAZE",
     "decimals": 12,
-    "initialPrice": 0.7778
+    "initialPrice": 0.6667
   },
   {
-    "name": "Betboom Stage 1",
-    "symbol": "Betboom-1",
+    "name": "Natus Vincere",
+    "symbol": "NAVI",
     "decimals": 12,
-    "initialPrice": 0.5833
+    "initialPrice": 0.6667
   },
   {
-    "name": "TYLOO Stage 1",
-    "symbol": "TYLOO-1",
+    "name": "Team Vitality",
+    "symbol": "VITALITY",
     "decimals": 12,
-    "initialPrice": 0.56
+    "initialPrice": 0.6667
   },
   {
-    "name": "Lynn Vision Stage 1",
-    "symbol": "LV-1",
+    "name": "The MongolZ",
+    "symbol": "MONGOLZ",
     "decimals": 12,
-    "initialPrice": 0.5385
+    "initialPrice": 0.3333
   },
   {
-    "name": "Wildcard Stage 1",
-    "symbol": "Wildcard-1",
+    "name": "paiN Gaming",
+    "symbol": "PAIN",
     "decimals": 12,
-    "initialPrice": 0.5185
+    "initialPrice": 0.3333
   },
   {
-    "name": "FlyQuest Stage 1",
-    "symbol": "FlyQuest-1",
+    "name": "MOUZ",
+    "symbol": "MOUZ",
     "decimals": 12,
-    "initialPrice": 0.4828
-  },
-  {
-    "name": "OG Stage 1",
-    "symbol": "OG-1",
-    "decimals": 12,
-    "initialPrice": 0.4667
-  },
-  {
-    "name": "Chinggis Warriors Stage 1",
-    "symbol": "CW-1",
-    "decimals": 12,
-    "initialPrice": 0.4516
-  },
-  {
-    "name": "Imperial Stage 1",
-    "symbol": "Imperial-1",
-    "decimals": 12,
-    "initialPrice": 0.4375
-  },
-  {
-    "name": "Nemiga Stage 1",
-    "symbol": "Nemiga-1",
-    "decimals": 12,
-    "initialPrice": 0.4
-  },
-  {
-    "name": "NRG Stage 1",
-    "symbol": "NRG-1",
-    "decimals": 12,
-    "initialPrice": 0.3784
-  },
-  {
-    "name": "Legacy Stage 1",
-    "symbol": "Legacy-1",
-    "decimals": 12,
-    "initialPrice": 0.2979
-  },
-  {
-    "name": "Metizport Stage 1",
-    "symbol": "Metizport-1",
-    "decimals": 12,
-    "initialPrice": 0.2917
-  },
-  {
-    "name": "Fluxo Stage 1",
-    "symbol": "Fluxo-1",
-    "decimals": 12,
-    "initialPrice": 0.2295
+    "initialPrice": 0.3333
   }
 ]

@@ -5,7 +5,7 @@ import { decodeAddress } from "@polkadot/util-crypto";
 import { readFileSync, writeFileSync } from "fs";
 
 // true for local, false for mainnet, change account and rpc
-const TESTNET = true;
+const TESTNET = false;
 
 class BlockProducer {
   constructor(provider, { interval = 6000 } = {}) {
@@ -50,6 +50,7 @@ async function createXykPool(
 
 async function sendAndWait(tx, signer, description) {
   return new Promise((resolve, reject) => {
+    console.log(tx.method.toHex());
     tx.signAndSend(signer, (result) => {
       if (
         (TESTNET && result.status.isInBlock) ||
@@ -214,7 +215,11 @@ async function main() {
   }
 
   const keyring = new Keyring({ type: "sr25519" });
-  const alice = keyring.addFromUri("//Alice", { name: "Alice default" });
+  let alice = TESTNET
+    ? keyring.addFromUri("//Alice", { name: "Alice default" })
+    : keyring.addFromMnemonic(
+        "opinion possible thumb turkey pitch name impact woman uniform hamster hamster adjust"
+      );
 
   console.log("--- CREATING TOKENS ON ASSET HUB ---");
 
@@ -277,17 +282,17 @@ async function main() {
 
   // const firstPoolCall = await createXykPool(testnetApi, {
   //   tokenA: new BN(5),
-  //   tokenB: new BN(50000140),
+  //   tokenB: new BN(assetMetadata[0].assetId),
   //   amountA: new BN(100).mul(new BN(10).pow(new BN(10))),
   //   initialPrice: 0.001,
   // });
   // await sendAndWait(firstPoolCall, alice, "First pool creation");
 
   for (let i = 0; i < assetMetadata.length; i++) {
-    //if (i === 0) continue;
+    if (i === 0) continue; // skip BLAST
     const asset = assetMetadata[i];
     const poolCall = await createXykPool(testnetApi, {
-      tokenA: new BN(50000140),
+      tokenA: new BN(assetMetadata[0].assetId),
       tokenB: new BN(asset.assetId),
       amountA: initialPoolSize,
       initialPrice: asset.initialPrice,
@@ -298,6 +303,28 @@ async function main() {
 
   const batchCall = testnetApi.tx.utility.batch(poolCalls);
   await sendAndWait(batchCall, alice, "Pool creation batch");
+
+  console.log("--- TRANSFERRING TEAM TOKENS TO SPECIFIED ADDRESS ---");
+
+  // Create batch transfer for all team tokens except BLAST
+  const transferCalls = [];
+  const targetAddress = "13pL24NVFPjazAYvSML8iABzFzMnARvEHCb8hXQuRWz9m5kG";
+
+  // Get all registered assets and filter out BLAST
+  for (const asset of assetMetadata) {
+    if (asset.symbol !== "BLAST") {
+      const halfAmount = transferAmount.div(new BN(3));
+      const transferCall = testnetApi.tx.tokens.transfer(
+        targetAddress,
+        asset.assetId,
+        halfAmount
+      );
+      transferCalls.push(transferCall);
+    }
+  }
+
+  const transferBatchCall = testnetApi.tx.utility.batch(transferCalls);
+  await sendAndWait(transferBatchCall, alice, "Team tokens batch transfer");
 
   console.log("--- SETUP COMPLETE ---");
 }

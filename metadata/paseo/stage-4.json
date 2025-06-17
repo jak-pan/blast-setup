@@ -1,0 +1,218 @@
+[
+  {
+    "assetId": 1000928,
+    "assetHubAssetId": 50000167,
+    "name": "BLAST",
+    "symbol": "BLAST",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000167
+          }
+        ]
+      }
+    },
+    "initialPrice": 1
+  },
+  {
+    "assetId": 1000929,
+    "assetHubAssetId": 50000168,
+    "name": "Team Spirit",
+    "symbol": "TS",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000168
+          }
+        ]
+      }
+    },
+    "initialPrice": 1
+  },
+  {
+    "assetId": 1000930,
+    "assetHubAssetId": 50000169,
+    "name": "FURIA",
+    "symbol": "FURIA",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000169
+          }
+        ]
+      }
+    },
+    "initialPrice": 1
+  },
+  {
+    "assetId": 1000931,
+    "assetHubAssetId": 50000170,
+    "name": "FaZe Clan",
+    "symbol": "FAZE",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000170
+          }
+        ]
+      }
+    },
+    "initialPrice": 0.6667
+  },
+  {
+    "assetId": 1000932,
+    "assetHubAssetId": 50000171,
+    "name": "Natus Vincere",
+    "symbol": "NAVI",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000171
+          }
+        ]
+      }
+    },
+    "initialPrice": 0.6667
+  },
+  {
+    "assetId": 1000933,
+    "assetHubAssetId": 50000172,
+    "name": "Team Vitality",
+    "symbol": "VITALITY",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000172
+          }
+        ]
+      }
+    },
+    "initialPrice": 0.6667
+  },
+  {
+    "assetId": 1000934,
+    "assetHubAssetId": 50000173,
+    "name": "The MongolZ",
+    "symbol": "MONGOLZ",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000173
+          }
+        ]
+      }
+    },
+    "initialPrice": 0.3333
+  },
+  {
+    "assetId": 1000935,
+    "assetHubAssetId": 50000174,
+    "name": "paiN Gaming",
+    "symbol": "PAIN",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000174
+          }
+        ]
+      }
+    },
+    "initialPrice": 0.3333
+  },
+  {
+    "assetId": 1000936,
+    "assetHubAssetId": 50000175,
+    "name": "MOUZ",
+    "symbol": "MOUZ",
+    "decimals": 12,
+    "location": {
+      "parents": 1,
+      "interior": {
+        "X3": [
+          {
+            "Parachain": 1000
+          },
+          {
+            "PalletInstance": 50
+          },
+          {
+            "GeneralIndex": 50000175
+          }
+        ]
+      }
+    },
+    "initialPrice": 0.3333
+  }
+]

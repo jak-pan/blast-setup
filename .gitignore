@@ -4,3 +4,4 @@ hydradx.db.sqlite-wal
 node_modules/
 db.*
 asset-metadata.json
+.DS_Store
