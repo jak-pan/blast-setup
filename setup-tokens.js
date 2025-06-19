@@ -3,6 +3,8 @@ import { Keyring } from "@polkadot/keyring";
 import { BN } from "@polkadot/util";
 import { decodeAddress } from "@polkadot/util-crypto";
 import { readFileSync, writeFileSync } from "fs";
+import dotenv from "dotenv";
+dotenv.config();
 
 // true for local, false for mainnet, change account and rpc
 const TESTNET = false;
@@ -183,7 +185,7 @@ async function main() {
 
   // Connect to Asset Hub
   const assetHubWsProvider = new WsProvider(
-    TESTNET ? "ws://localhost:8001" : "wss://asset-hub-paseo-rpc.dwellir.com"
+    TESTNET ? "ws://localhost:8001" : "wss://polkadot-asset-hub-rpc.polkadot.io"
   );
   const assetHubApi = await ApiPromise.create({
     provider: assetHubWsProvider,
@@ -193,7 +195,7 @@ async function main() {
 
   // Connect to Testnet
   const testnetWsProvider = new WsProvider(
-    TESTNET ? "ws://localhost:8000" : "wss://paseo-rpc.play.hydration.cloud"
+    TESTNET ? "ws://localhost:8000" : "wss://hydration-rpc.n.dwellir.com"
   );
   const testnetApi = await ApiPromise.create({
     provider: testnetWsProvider,
@@ -217,9 +219,7 @@ async function main() {
   const keyring = new Keyring({ type: "sr25519" });
   let alice = TESTNET
     ? keyring.addFromUri("//Alice", { name: "Alice default" })
-    : keyring.addFromMnemonic(
-        "opinion possible thumb turkey pitch name impact woman uniform hamster hamster adjust"
-      );
+    : keyring.addFromMnemonic(process.env.MNEMONIC);
 
   console.log("--- CREATING TOKENS ON ASSET HUB ---");
 

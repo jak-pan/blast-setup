@@ -5,3 +5,4 @@ node_modules/
 db.*
 asset-metadata.json
 .DS_Store
+.env
